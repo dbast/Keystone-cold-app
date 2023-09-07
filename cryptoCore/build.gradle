@@ -60,7 +60,7 @@ android {
 apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.annotation:annotation:1.7.0'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
     implementation 'com.google.protobuf:protobuf-java:3.7.1'
     implementation 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
