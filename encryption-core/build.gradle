@@ -48,7 +48,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.annotation:annotation:1.7.0'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
     testImplementation "junit:junit:${rootProject.junit}"
     testImplementation "org.mockito:mockito-core:${rootProject.mockito}"
