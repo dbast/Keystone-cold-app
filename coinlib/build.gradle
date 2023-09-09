@@ -76,7 +76,7 @@ dependencies {
     implementation 'com.eclipsesource.j2v8:j2v8:6.2.0@aar'
     implementation 'com.google.guava:guava:27.1-android'
     dependencies {
-        implementation(group: "com.networknt", name: "json-schema-validator", version: "1.0.43");
+        implementation(group: "com.networknt", name: "json-schema-validator", version: "1.0.87");
     }
 
     testImplementation 'junit:junit:4.12'
