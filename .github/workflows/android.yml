@@ -2,22 +2,39 @@ name: Android CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         submodules: 'true'
-    - name: set up JDK 1.8
-      uses: actions/setup-java@v1
+    - name: set up JDK
+      uses: actions/setup-java@v3
       with:
-        java-version: 1.8
+        distribution: temurin
+        java-version: 8
+    - name: Setup Android Tooling
+      uses: amyu/setup-android@v2
+      with:
+        # see https://developer.android.com/studio/releases/platforms
+        sdk-version: '27'
+        # see https://developer.android.com/studio/releases/build-tools
+        build-tools-version: '27.0.3'
+        # see https://developer.android.com/studio/projects/install-ndk
+        ndk-version: '18.1.5063045'
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        target: armv7-unknown-linux-gnueabihf
+        override: true
     - name: Build with Gradle
-      run: ./gradlew assembleVault_v2Release
+      run: |
+        # rustup update stable && rustup default stable
+        cp keystores/test.properties keystores/v2.properties
+        ./gradlew build --stacktrace
+        ./gradlew assembleVault_v2Release
